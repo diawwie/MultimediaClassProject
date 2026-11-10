@@ -13,7 +13,6 @@ public class PatrolController : MonoBehaviour
     [SerializeField] private float wallCheckDistance = 0.15f;
     [SerializeField] private LayerMask groundLayer;
 
-
     [Header("Stomp")]
     [SerializeField] private float stompBounce = 10f;
 
@@ -54,7 +53,6 @@ public class PatrolController : MonoBehaviour
         spriteRenderer.flipX = direction > 0;
     }
 
-
     void OnCollisionEnter2D(Collision2D collision)
     {
         if (!collision.collider.CompareTag("Player")) return;
@@ -72,6 +70,7 @@ public class PatrolController : MonoBehaviour
             GameManager.Instance.PlayerDied();
         }
     }
+
     void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.green;

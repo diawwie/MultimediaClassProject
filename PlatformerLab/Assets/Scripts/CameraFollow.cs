@@ -32,7 +32,6 @@ public class CameraFollow : MonoBehaviour
     {
         float halfWidth = cam.orthographicSize * cam.aspect;
         return Mathf.Clamp(target.position.x, levelLeft + halfWidth, levelRight - halfWidth);
-        //return target.position.x;
     }
 
     void MoveTo(float x)

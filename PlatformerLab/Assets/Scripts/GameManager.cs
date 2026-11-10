@@ -14,9 +14,6 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject endPanel;
     [SerializeField] private TMP_Text endTitle;
 
-    [Header("Stomp")]
-    [SerializeField] private float stompBounce = 10f;
-
     private int score;
     private bool gameOver;
 
@@ -77,23 +74,5 @@ public class GameManager : MonoBehaviour
     private void ShowScore()
     {
         scoreText.text = $"Score: {score}";
-    }
-
-    void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (!collision.collider.CompareTag("Player")) return;
-
-        // Feet above our middle: the player came down on top of us.
-        if (collision.transform.position.y > transform.position.y + 0.5f)
-        {
-            Rigidbody2D playerBody = collision.rigidbody;
-            playerBody.linearVelocity = new Vector2(playerBody.linearVelocity.x, stompBounce);
-            GameManager.Instance.AddScore(100);
-            Destroy(gameObject);
-        }
-        else
-        {
-            GameManager.Instance.PlayerDied();
-        }
     }
 }
